@@ -1,0 +1,53 @@
+package HighPeakSoftware;
+
+import java.util.Scanner;
+
+public class Factory {
+
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		int capacity = scan.nextInt();
+		int [][] m = new int[capacity][3];
+		
+		for(int a=0;a<m.length;a++)
+		{
+			for(int b=0;b<m.length;b++)
+			{
+				m[a][b] = scan.nextInt();
+			}
+		}
+		
+		int end [] = solve(m);
+		
+		System.out.println("Sample Output:");
+		for(int a: end)
+		{
+			System.out.println(a);
+		}
+		
+	}
+	
+	public static int[] solve(int[][] n)
+	{
+		int high = n[0][2];
+		int add=0;
+		
+		for(int i=0;i<n.length;i++)
+		{
+			add = add+n[i][2];
+			if(high<n[i][2])
+			{
+				high = n[i][2];
+			}
+		}
+		
+		int [] end = new int[2];
+		end[0] = n.length-1;
+		end[1] = add-high;
+		
+		
+		return end;
+	}
+
+}
